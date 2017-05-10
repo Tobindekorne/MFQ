@@ -22,6 +22,13 @@ public class Driver
 // Using the standard namespace of input/output
 using namespace std;
 
-int main() {
-  return 0;     
+/*
+ *  Purpose: The main driver function
+ *
+ */
+int main(int argc, char const *argv[]) {
+  /* code */
+  return 0;
+} {
+  return 0;
 }
