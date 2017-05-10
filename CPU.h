@@ -3,100 +3,80 @@
  * Contains the methods necessary to simulate the job of the cpu to process jobs.
  * 
  * @author Tobin deKorne'
+ * @revised by Shrey Patel
  * @version 7/14/2011
  */
-public class CPU
-{
-    private Job job;
-    private int qClock;
-    private boolean flag;
 
+#ifndef CPU_H
+#define CPU_H
+#include 'Job.h'
+
+class CPU
+{
+    private: 
+        Job job;
+        int qClock;
+        bool flag;
+    
+    public: 
     /**
      * Constructor for objects of class CPU
      */
-    public CPU()
-    {
-        qClock = 0;
-        flag = false;
-    }
+    CPU();
 
     /**
      * Sets the flag to determine whether or not the cpu is busy.
      * 
      * @param  value    the boolean value to set the flag to.
      */
-    public void setFlag(boolean value)
-    {
-            flag = value;
-    }
+    void setFlag(boolean value);
     
     /**
      * Returns whether or not the cpu is busy.
      * 
      * @return     Whether or not the cpu is busy.
      */
-    public boolean isBusy()
-    {
-        return flag == true;
-    }
+    bool isBusy();
     
     /**
      * Decrements the quantum clock
      * 
      */
-    public void decClock()
-    {
-        qClock--;
-        job.decClock();
-    }
+    void decClock();
     
     /**
      * Sets the quantum clock.
      * 
      * @param  quantum   the time quantum allowed for the current job process.
      */
-    public void setClock(int quantum)
-    {
-        qClock = quantum;
-    }
+    void setClock(int quantum);
     
     /**
      * Submits a new job to the CPU
      * 
      * @param  newJob   The job being submitted.
      */
-    public void submitJob(Job newJob)
-    {
-        job = newJob;
-    }
-    
+    void submitJob(Job newJob); 
     /**
      * Returns whether or not the quantum clock has reached zero.
      * 
      * @return     true if the quantum clock equals 0. Otherwise, false.
      */
-    public boolean complete()
-    {
-        return qClock == 0;
-    }
+    bool complete();
     
     /**
      * Returns the current job in the CPU.
      * 
      * @return     the current job in the CPU.
      */
-    public Job currentJob()
-    {
-        return job;
-    }
+    Job currentJob();
     
     /**
      * Returns the current value of the quantum clock.
      * 
      * @return  the current value of the quantum clock.
      */
-    public int getClock()
-    {
-        return qClock;
-    }
-}
+    int getClock();
+};
+
+#endif
