@@ -27,7 +27,9 @@ using namespace std;
 
 /*
  *  Purpose: The main driver function handling
- *
+ *  Input: int argc - The number of arguments in the excution command
+ *  Output: Positive integers if the program run without errors and
+ *  negitive integers with errors.
  */
 int main(int argc, char const *argv[]) {
   // Creating an CPU object to handle the MFQ
