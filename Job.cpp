@@ -18,7 +18,8 @@
     /**
      * Constructor for objects of class Job
      */
-    public Job(String s)
+  public:
+     Job::Job(String s)
     {
         st = new StringTokenizer(s);
         arrTime = Integer.parseInt(st.nextToken());
@@ -33,7 +34,7 @@
      * Decrements the job clock
      *
      */
-    public void decClock()
+    void Job::decClock()
     {
         jobClock--;
     }
@@ -43,7 +44,7 @@
      *
      * @return     the arrival time of the job to the system.
      */
-    public int getArrTime()
+    int Job::getArrTime()
     {
         return arrTime;
     }
@@ -53,7 +54,7 @@
      *
      * @return     the process identifier.
      */
-    public int getPid()
+    int Job::getPid()
     {
         return pid;
     }
@@ -63,7 +64,7 @@
      *
      * @return     true if the job has completed. Otherwise, false.
      */
-    public boolean isFinished()
+    bool Job::isFinished()
     {
         return jobClock == 0;
     }
@@ -72,7 +73,7 @@
      * Increments the job to a lower level queue.
      *
      */
-    public void incLLQ()
+    void Job::incLLQ()
     {
         llq++;
     }
@@ -82,7 +83,7 @@
      *
      * @return     the lowest level queue that the job entered.
      */
-    public int getLLQ()
+    int Job::getLLQ()
     {
         return llq;
     }
@@ -92,7 +93,7 @@
      *
      * @return     the current value of the jobClock.
      */
-    public int getClock()
+    int Job::getClock()
     {
         return jobClock;
     }
@@ -102,7 +103,7 @@
      *
      * @return     the time required for the cpu to process the job.
      */
-    public int getCpuTime()
+    int Job::getCpuTime()
     {
         return cpuTime;
     }
@@ -111,7 +112,7 @@
      * Sets the time that the job has entered into a queue.
      *
      */
-    public void enterQ(int time)
+    void Job::enterQ(int time)
     {
         enterQueue = time;
     }
@@ -120,7 +121,7 @@
      * Sets the time that the job leaves a queue.
      *
      */
-    public void leaveQ(int time)
+    void Job::leaveQ(int time)
     {
         leaveQueue = time;
         waitTime += leaveQueue - enterQueue;
@@ -131,7 +132,7 @@
      *
      * @return     the time the job waited in queues through its lifetime.
      */
-    public int getWaitTime()
+    int Job::getWaitTime()
     {
         return waitTime;
     }
@@ -141,7 +142,7 @@
      *
      * @param     the time the job started running.
      */
-    public int getResponseTime(int time)
+    int Job::getResponseTime(int time)
     {
         return time - arrTime;
     }
