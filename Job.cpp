@@ -4,17 +4,6 @@
  * @author Tobin deKorne'
  * @version 5/9/2017
  */
-  private:
-    int arrTime;
-    int pid;
-    int cpuTime;
-    int llq;
-    int jobClock;
-    int enterQueue;
-    int leaveQueue;
-    int waitTime;
-    int response;
-
     /**
      * Constructor for objects of class Job
      */

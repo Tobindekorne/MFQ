@@ -3,8 +3,8 @@ import java.util.Scanner;
 import java.io.FileNotFoundException;
 /**
  * Write a description of class MFQ here.
- * 
- * @author Tobin deKorne' 
+ *
+ * @author Tobin deKorne'
  * @version 7/14/2011
  */
 public class MFQ
@@ -49,14 +49,14 @@ public class MFQ
 
     /**
      * Reads the "mfq.txt" file and inserts the jobs into the input queue
-     * 
+     *
      */
     public void readInput()
     {
         try{
             File inputFile = new File("mfq.txt");
             Scanner input = new Scanner(inputFile);
-        
+
             while (input.hasNextLine()) {
                 String line = input.nextLine();
                 job = new Job(line);
@@ -66,12 +66,12 @@ public class MFQ
             System.out.println("mfq.txt not found!");
         }
     }
-    
+
     /**
      * Proccesses the arrival of a job from the queuing system.
-     * 
+     *
      * @param  arrJob   the arriving job.
-     * @return     the sum of x and y 
+     * @return     the sum of x and y
      */
     public void processArrival(Job arrJob)
     {
@@ -79,12 +79,12 @@ public class MFQ
         lw.println(String.format("%-15s%-15d%-10d%-15d\n", "Arrival", clock, arrJob.getPid(), arrJob.getCpuTime()));
         numJobs++;
     }
-    
+
     /**
      * Proccesses the departure of a job from the queuing system.
-     * 
+     *
      * @param  depJob   the departing job.
-     * @return     the sum of x and y 
+     * @return     the sum of x and y
      */
     public void processDeparture(Job depJob)
     {
@@ -93,10 +93,10 @@ public class MFQ
         System.out.printf("%-15s%-15d%-10d%-15s%-20d%-15d\n", "Departure", clock, depJob.getPid(), " ", clock - depJob.getArrTime(), depJob.getLLQ());
         lw.println(String.format("%-15s%-15d%-10d%-15s%-20d%-15d\n", "Departure", clock, depJob.getPid(), " ", clock - depJob.getArrTime(), depJob.getLLQ()));
     }
-    
+
     /**
      * Processes the input from mfq.txt.
-     * 
+     *
      */
     public void processInput()
     {
@@ -156,10 +156,10 @@ public class MFQ
             lw.close();
         }
     }
-    
+
     /**
      * Submits a job from the appropriate queue to the cpu.
-     *  
+     *
      */
     public void submitCorrect()
     {
@@ -193,11 +193,11 @@ public class MFQ
             cpu.setFlag(true);
         }
     }
-    
+
     /**
      * Places a job in the correct queue according to it's current lowest level queue assignment.
-     * 
-     * @param  inJob   the job to be sorted to the correct queue. 
+     *
+     * @param  inJob   the job to be sorted to the correct queue.
      */
     public void placeInQ(Job inJob)
     {
@@ -218,11 +218,11 @@ public class MFQ
             inJob.enterQ(clock);
         }
     }
-    
+
     /**
      * Checks the condition for whether or not all jobs have been processed.
-     * 
-     * @return     true, if all jobs have been processed. Otherwise, false. 
+     *
+     * @return     true, if all jobs have been processed. Otherwise, false.
      */
     public boolean isFinished()
     {
