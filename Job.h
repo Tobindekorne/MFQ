@@ -2,6 +2,8 @@
 #define JOB_H
 
 #include <fstream>
+#include <string>
+using namespace std;
 class Job
 {
     private:
@@ -10,14 +12,13 @@ class Job
       int cpuTime;
       int llq;
       int jobClock;
-      StringTokenizer st;
       int enterQueue;
       int leaveQueue;
       int waitTime;
       int response;
 
     public:
-      Job(String s);
+      Job(string s);
 
     /**
      * Decrements the job clock
@@ -37,7 +38,7 @@ class Job
      *
      * @return     the process identifier.
      */
-      int getPid()
+      int getPid();
 
     /**
      * Checks whether or not the job has completed.

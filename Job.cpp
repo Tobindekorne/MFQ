@@ -4,16 +4,16 @@
  * @author Tobin deKorne'
  * @version 5/9/2017
  */
+ #include "Job.h"
     /**
      * Constructor for objects of class Job
      */
 
-     Job::Job(String s)
+     Job::Job(string s)
     {
-        st = new StringTokenizer(s);
-        arrTime = Integer.parseInt(st.nextToken());
-        pid = Integer.parseInt(st.nextToken());
-        cpuTime = Integer.parseInt(st.nextToken());
+        arrTime = 0;
+        pid = 0;
+        cpuTime = 0;
         jobClock = cpuTime;
         llq = 1;
         waitTime = 0;
@@ -136,4 +136,3 @@
     {
         return time - arrTime;
     }
-}
