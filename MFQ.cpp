@@ -4,29 +4,6 @@
 #include "ObjectQueue.h"
 
 MFQ::MFQ() {
-<<<<<<< HEAD
-  // Opening writing to file log
-  ofstream fout;
-  // Finding mfq.txt
-  fout.open("mfq.txt");
-  if(fout) {
-    // Setting to the initial values of the MFQ attributes
-    numJobs = 0;
-    totalJobTime = 0;
-    avrgRspnsTime = 0;
-    totalWtTime = 0;
-    CPUIdle = 0;
-    clock = 0;
-    CPU = new CPU();
-    inputQ = new ObjectQueue();
-    fout << "MFQ 1:"; // Actual Input for Log.
-    System.out.printf("\f");
-    System.out.printf("%-15s%-15s%-10s%-15s%-20s%-15s\n", "Event", "System Time", "PID", "CPU Time", "Time In System", "Lowest Level Queue");
-  }
-  else {
-    cout << "mfq.txt does not exist. MFQ not created." << endl;
-  }
-=======
   // Setting to the initial values of the MFQ attributes
   numJobs = 0;
   totalJobTime = 0;
@@ -41,13 +18,14 @@ MFQ::MFQ() {
   q3 = new ObjectQueue();
   q4 = new ObjectQueue();
   cout << "(To file)" << endl; FIX ME
->>>>>>> c95d83eda6759d4d7d2d17c0eb2b3e03f4e9bfc0
 }
 
 /*
  *  Purpose: This method will find mfq.txt
  *  and inserts the jobs into the input
  *  queue.
+ *
+ *
  */
 void MFQ::readInput() {
   try {
@@ -100,7 +78,35 @@ void MFQ::readInput() {
 
   void MFQ::submitCorrect()
   {
-
+    if (!q1.isEmpty()){
+        Job q1Job = q1.remove();
+        cpu.submitJob(q1Job);
+        q1Job.leaveQ(clock);
+        avrgRspnsTime += q1Job.getResponseTime(clock);
+        cpu.setClock(2);
+        cpu.setFlag(true);
+    }
+    else if (!q2.isEmpty()){
+        Job q2Job = q2.remove();
+        cpu.submitJob(q2Job);
+        q2Job.leaveQ(clock);
+        cpu.setClock(4);
+        cpu.setFlag(true);
+    }
+    else if (!q3.isEmpty()){
+        Job q3Job = q3.remove();
+        cpu.submitJob(q3Job);
+        q3Job.leaveQ(clock);
+        cpu.setClock(8);
+        cpu.setFlag(true);
+    }
+    else if (!q4.isEmpty()){
+        Job q4Job = q4.remove();
+        cpu.submitJob(q4Job);
+        q4Job.leaveQ(clock);
+        cpu.setClock(16);
+        cpu.setFlag(true);
+    }
   }
 
   /**
@@ -111,7 +117,22 @@ void MFQ::readInput() {
 
   void MFQ::placeInQ(Job inJob)
   {
-
+    if (inJob.getLLQ() == 1){
+        q1.insert(inJob);
+        inJob.enterQ(clock);
+    }
+    else if (inJob.getLLQ() == 2){
+        q2.insert(inJob);
+        inJob.enterQ(clock);
+    }
+    else if (inJob.getLLQ() == 3){
+        q3.insert(inJob);
+        inJob.enterQ(clock);
+    }
+    else if (inJob.getLLQ() == 4){
+        q4.insert(inJob);
+        inJob.enterQ(clock);
+    }
   }
 
   /**
@@ -122,5 +143,5 @@ void MFQ::readInput() {
 
   bool MFQ::isFinished()
   {
-
+      return q1.isEmpty() && q2.isEmpty() && q3.isEmpty() && q4.isEmpty() && inputQ.isEmpty() && !cpu.isBusy();
   }
