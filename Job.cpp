@@ -5,13 +5,21 @@
  * @version 5/9/2017
  */
   private:
+    //Holds the the time a job arrives as an integer
     int arrTime;
+    //Process identifier of a job as an integer
     int pid;
+    //Time it takes for a cpu to finish a job
     int cpuTime;
+    //The lowest level queue the job entered
     int llq;
+
     int jobClock;
+    //Time job entered queue
     int enterQueue;
+    //Time job left queue
     int leaveQueue;
+    //Time waiting in queue
     int waitTime;
     int response;
 
@@ -124,6 +132,7 @@
     void Job::leaveQ(int time)
     {
         leaveQueue = time;
+        //Increase the total wait time by the total time in queue
         waitTime += leaveQueue - enterQueue;
     }
 
