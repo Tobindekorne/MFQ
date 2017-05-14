@@ -4,9 +4,6 @@
  * May 9, 2017
  */
 
-// Including the CPU header file that implements a CPU class
-#include "CPU.h"
-
 // Including the MFQ header file that implements a Multilevel Feedback Queue class
 #include "MFQ.h"
 
@@ -20,8 +17,6 @@ using namespace std;
  *  negitive integers with errors.
  */
 int main(int argc, char const *argv[]) {
-  // Creating an CPU object to handle the MFQ
-  CPU centralProcessingUnit;
   // Creating an MFQ object to interpret the elements in mfq.txt
   MFQ multFeedBackQueue;
   // Reading input from mfq.txt using the method readInput()
