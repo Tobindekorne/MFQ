@@ -5,6 +5,8 @@
 #include "ObjectQueue.h"
 // Including CPU Header File
 #include "CPU.h"
+//Including Job Header File
+#include "Job.h"
 
 
 class MFQ {
@@ -19,7 +21,7 @@ private:
 public:
   MFQ();
   void readInput();
-  processArrival(Job arrJob);
+  void processArrival(Job arrJob);
   void processDeparture(Job depJob);
   void processInput();
   void submitCorrect();

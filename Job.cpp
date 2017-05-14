@@ -4,6 +4,28 @@
  * @author Tobin deKorne'
  * @version 5/9/2017
  */
+<<<<<<< HEAD
+=======
+  private:
+    //Holds the the time a job arrives as an integer
+    int arrTime;
+    //Process identifier of a job as an integer
+    int pid;
+    //Time it takes for a cpu to finish a job
+    int cpuTime;
+    //The lowest level queue the job entered
+    int llq;
+
+    int jobClock;
+    //Time job entered queue
+    int enterQueue;
+    //Time job left queue
+    int leaveQueue;
+    //Time waiting in queue
+    int waitTime;
+    int response;
+
+>>>>>>> c95d83eda6759d4d7d2d17c0eb2b3e03f4e9bfc0
     /**
      * Constructor for objects of class Job
      */
@@ -113,6 +135,7 @@
     void Job::leaveQ(int time)
     {
         leaveQueue = time;
+        //Increase the total wait time by the total time in queue
         waitTime += leaveQueue - enterQueue;
     }
 
